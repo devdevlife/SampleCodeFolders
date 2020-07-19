@@ -348,3 +348,44 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# =============== #
+# Unity generated #
+# =============== #
+Temp/
+Obj/
+UnityGenerated/
+Library/
+Assets/AssetStoreTools*
+Logs/
+
+# =============================================== #
+# Visual Studio / MonoDevelop generated / VS Code #
+# =============================================== #
+ExportedObj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+.vs/*
+.vscode/*
+Assets/VSCode/*
+Assets/VSCode.meta
+
+# ============ #
+# OS generated #
+# ============ #
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
