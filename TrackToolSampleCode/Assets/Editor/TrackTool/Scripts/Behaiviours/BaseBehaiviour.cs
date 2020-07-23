@@ -9,6 +9,7 @@ using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
 using UnityEditor.Compilation;
+using ReflectionHelper;
 
 namespace TrackTool
 {
@@ -23,11 +24,12 @@ namespace TrackTool
         void SetBehaiviourInfo(float start, float end);
         void SetEventData<E>(E eventData) where E : TrackData.EventData;
 
-        E GetEventData<E>() where E : TrackData.EventData;
+        TrackData.EventData GetEventData();
     }
 
     public abstract class BaseBehaiviour<T> : PlayableBehaviour, IBaseBehaviour where T : TrackData.EventData
     {
+        [SerializeField]
         public T EventData;
 
         [HideInInspector]
@@ -68,9 +70,9 @@ namespace TrackTool
             //EventData = _eventData;
         }
 
-        public E GetEventData<E>() where E : TrackData.EventData
+        public TrackData.EventData GetEventData()
         {
-            return null;
+            return this.EventData;
         }
         #endregion
     }

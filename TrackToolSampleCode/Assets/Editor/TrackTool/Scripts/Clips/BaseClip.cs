@@ -12,6 +12,7 @@ namespace TrackTool
     public interface IBaseClip
     {
         void SetParentTimelineClip(TimelineClip _parentTimelineClip);
+        TrackData.EventData GetEventData();
     }
 
     [Serializable]
@@ -35,6 +36,11 @@ namespace TrackTool
         public void SetParentTimelineClip(TimelineClip _parentTimelineClip)
         {
             template.SetParentTimelineClip(_parentTimelineClip);
+        }
+
+        public TrackData.EventData GetEventData()
+        {
+            return template.GetEventData();
         }
         #endregion
     }

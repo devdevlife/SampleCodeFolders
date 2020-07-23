@@ -7,10 +7,14 @@ using UnityEditor;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
 using UnityEngine.Timeline;
+using System.Runtime.Serialization;
 
 [Serializable]
 public partial class TrackData
 {
+    /// <summary>
+    /// Clip Event Type
+    /// </summary>
     public enum eEvent
     {
         Sound,
@@ -60,6 +64,7 @@ public partial class TrackData
         [ShowInspector(ShowFieldType.GameObject)]
         public string EffectName;
 
+        [SerializeField]
         public Vector3 Offset;
     }
 
@@ -74,4 +79,9 @@ public partial class TrackData
     {
         public override eEvent Type { get { return eEvent.Skill; } }
     }
+
+    public string ID;
+    public string AnimationName;
+    public eAction ActionType;
+    public EventData[] EventDataArray;
 }
