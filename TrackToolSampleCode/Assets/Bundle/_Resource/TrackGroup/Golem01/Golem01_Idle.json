@@ -1,1 +1,1 @@
-{"ID":"","AnimationName":"gjgjgj","TrackDataArray":[{"LastEventType":0}]}
+﻿{"ID":"Golem01_Idle","AnimationName":"idle","ActionType":"Idle","EventDataArray":[{"$type":"TrackData+SoundEventData, Assembly-CSharp","SoundName":null,"Volume":0,"TrackTitle":"SoundEventClip","Disable":false,"StartTime":0.0,"EndTime":1.0,"Type":"Sound","EventGroupName":"Art"}]}

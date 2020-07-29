@@ -14,6 +14,7 @@ namespace TrackTool
     [CustomPropertyDrawer(typeof(EffectEventBehaiviour))]
     [CustomPropertyDrawer(typeof(SoundEventBehaiviour))]
     [CustomPropertyDrawer(typeof(ScreenEffectEventBehaiviour))]
+    [CanEditMultipleObjects]
     public class BehaiviourPropertyDrawer : PropertyDrawer
     {
         private bool isLoadedFieldInfo = false;

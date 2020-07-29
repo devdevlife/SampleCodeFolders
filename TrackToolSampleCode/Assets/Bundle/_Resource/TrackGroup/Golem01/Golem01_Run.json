@@ -1,1 +1,31 @@
-{"ID":"Golem01_None","AnimationName":"idle","EventDataArray":[{"SoundName":"Explosion 1","Volume":24,"Disable":false,"StartTime":0.333333343,"EndTime":1.33333337,"Type":0},{"EffectName":"","Offset":{"x":0.0,"y":0.0,"z":0.0},"Disable":false,"StartTime":0.533333361,"EndTime":1.5333333,"Type":1},{"SoundName":"Metal impact 5","Volume":24,"Disable":false,"StartTime":0.15,"EndTime":1.15,"Type":0}]}
+﻿{
+	"ID": "Golem01_Run",
+	"AnimationName": "run",
+	"ActionType": "Run",
+	"EventDataArray": [
+		{
+			"$type": "TrackData+EffectEventData, Assembly-CSharp",
+			"EffectName": null,
+			"Offset": {
+				"x": 0.0,
+				"y": 0.0,
+				"z": 0.0
+			},
+			"Disable": false,
+			"StartTime": 0.2,
+			"EndTime": 1.2,
+			"Type": "Effect",
+			"EventGroupType": "Art",
+		},
+		{
+			"$type": "TrackData+SoundEventData, Assembly-CSharp",
+			"SoundName": null,
+			"Volume": 0,
+			"Disable": false,
+			"StartTime": 0.45,
+			"EndTime": 1.45,
+			"Type": "Sound",
+			"EventGroupType": "Art",
+		}
+	]
+}

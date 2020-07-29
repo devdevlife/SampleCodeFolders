@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameDesignTrack : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
-    // Update is called once per frame
-    void Update()
+namespace TrackTool
+{
+    [TrackColor(1.0f, 1.0f, 1.0f)]
+    public class GameDesignTrack : BaseTrack
     {
-        
+       
     }
 }

@@ -25,10 +25,21 @@ public partial class TrackData
         SuperArmor,
     }
 
+    public enum eEventGroupType
+    {
+        Art,
+        GameDesing,
+    }
+
+
     [Serializable]
     public abstract class EventData
     {
-        public virtual eEvent Type { get; }
+        public abstract string Type { get; }
+        public abstract string EventGroupName { get; }
+
+        [ShowInspector(ShowFieldType.Hide)]
+        public string TrackTitle;
 
         [ShowInspector(ShowFieldType.HideAllSwitch)]
         public bool Disable;
@@ -47,7 +58,8 @@ public partial class TrackData
         //[ShowInspector(ShowFieldType.ShowIf, ConditionOperator.InverseAnd, new string[] { "Disable", "DisableTest" })]
         //public int TestInverseAnd;
 
-        public override eEvent Type { get { return eEvent.Sound; } }
+        public override string Type { get { return eEvent.Sound.ToString(); } }
+        public override string EventGroupName { get { return eEventGroupType.Art.ToString(); } }
 
         [ShowInspector(ShowFieldType.Audio)]
         public string SoundName;
@@ -59,7 +71,8 @@ public partial class TrackData
     [Serializable]
     public class EffectEventData : EventData
     {
-        public override eEvent Type { get { return eEvent.Effect; } }
+        public override string Type { get { return eEvent.Effect.ToString(); } }
+        public override string EventGroupName { get { return eEventGroupType.Art.ToString(); } }
 
         [ShowInspector(ShowFieldType.GameObject)]
         public string EffectName;
@@ -71,17 +84,19 @@ public partial class TrackData
     [Serializable]
     public class ScreenEventData : EventData
     {
-        public override eEvent Type { get { return eEvent.ScreenEffect; } }
+        public override string Type { get { return eEvent.ScreenEffect.ToString(); } }
+        public override string EventGroupName { get { return eEventGroupType.GameDesing.ToString(); } }
     }
 
     [Serializable]
     public class SkillEventData : EventData
     {
-        public override eEvent Type { get { return eEvent.Skill; } }
+        public override string Type { get { return eEvent.Skill.ToString(); } }
+        public override string EventGroupName { get { return eEventGroupType.GameDesing.ToString(); } }
     }
 
     public string ID;
     public string AnimationName;
-    public eAction ActionType;
+    public string ActionType;
     public EventData[] EventDataArray;
 }

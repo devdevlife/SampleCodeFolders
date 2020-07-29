@@ -58,6 +58,7 @@ namespace ReflectionHelper
         private static UnityEngine.Object CustomDrawerObjectTemp;
         private static readonly string pathAssetSoundEffet = "Sound/Effect/";
         private static readonly string pathAssetSoundUI = "Sound/UI/";
+        private static readonly string pathAssetEffect = "Effects/KTK_Effect_Samples/Prefab/";
 
         public static object GetCreateInstanceAssembly(string typeName, object[] args = null)
         {
@@ -239,9 +240,9 @@ namespace ReflectionHelper
                             var audioClipName = (string)_fieldInfoData.GetValue();
                             var targetAudioClip = LoadInspectorResourceObject<AudioClip>(ResourceType.Sound_Effect, audioClipName);
 
-                            var changeObject = EditorGUILayout.ObjectField(_fieldInfoData.FiedlInfoData.Name, targetAudioClip, typeof(AudioClip), false);
+                            var changeObject = EditorGUILayout.ObjectField(_fieldInfoData.FiedlInfoData.Name, targetAudioClip, typeof(AudioClip), true);
                             if (changeObject != null &&
-                               changeObject.name.Contains(audioClipName) == false)
+                               changeObject.name.Equals(audioClipName) == false)
                             {
                                 _fieldInfoData.SetValue(changeObject.name);
                             }
@@ -250,7 +251,15 @@ namespace ReflectionHelper
 
                     case ShowFieldType.GameObject:
                         {
+                            var audioClipName = (string)_fieldInfoData.GetValue();
+                            var targetAudioClip = LoadInspectorResourceObject<GameObject>(ResourceType.Effect, audioClipName);
 
+                            var changeObject = EditorGUILayout.ObjectField(_fieldInfoData.FiedlInfoData.Name, targetAudioClip, typeof(GameObject), true);
+                            if (changeObject != null &&
+                               changeObject.name.Equals(audioClipName) == false)
+                            {
+                                _fieldInfoData.SetValue(changeObject.name);
+                            }
                         }
                         break;
                 }
@@ -275,7 +284,8 @@ namespace ReflectionHelper
             switch (resourceType)
             {
                 case ResourceType.Sound_Effect: { path = pathAssetSoundEffet; } break;
-                case ResourceType.Sound_UI: { path = pathAssetSoundUI; } break;
+                case ResourceType.Sound_UI: { path = pathAssetSoundUI; }    break;
+                case ResourceType.Effect: { path = pathAssetEffect; }   break;
             }
 
             return Resources.Load<T>(path + resourceName);

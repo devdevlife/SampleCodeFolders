@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using System;
+using UnityEditor;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using System.Net.NetworkInformation;
@@ -13,9 +14,10 @@ namespace TrackTool
     {
         void SetParentTimelineClip(TimelineClip _parentTimelineClip);
         TrackData.EventData GetEventData();
+        void SetEventData(TrackData.EventData _eventData);
     }
 
-    [Serializable]
+    [Serializable]    
     public class BaseClip<T> : PlayableAsset, ITimelineClipAsset, IBaseClip where T : PlayableBehaviour, IBaseBehaviour, new() 
     {
         public T template = new T();
@@ -41,6 +43,11 @@ namespace TrackTool
         public TrackData.EventData GetEventData()
         {
             return template.GetEventData();
+        }
+
+        public void SetEventData(TrackData.EventData _eventData)
+        {
+            this.template.SetEventData(_eventData);
         }
         #endregion
     }

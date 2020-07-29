@@ -10,6 +10,9 @@ using UnityEngine.Timeline;
 
 using UnityEditor.Compilation;
 using ReflectionHelper;
+using Unity.Collections.LowLevel.Unsafe;
+using System.CodeDom;
+using System.Runtime.CompilerServices;
 
 namespace TrackTool
 {
@@ -22,15 +25,15 @@ namespace TrackTool
 
         void SetParentTimelineClip(TimelineClip _parentTimelineClip);
         void SetBehaiviourInfo(float start, float end);
-        void SetEventData<E>(E eventData) where E : TrackData.EventData;
+        void SetEventData(TrackData.EventData _eventData);
 
         TrackData.EventData GetEventData();
     }
 
-    public abstract class BaseBehaiviour<T> : PlayableBehaviour, IBaseBehaviour where T : TrackData.EventData
+    public abstract class BaseBehaiviour<T> : PlayableBehaviour, IBaseBehaviour where T : TrackData.EventData, new()
     {
         [SerializeField]
-        public T EventData;
+        public T EventData = new T();
 
         [HideInInspector]
         protected TimelineClip parentTimelineClip;
@@ -65,9 +68,12 @@ namespace TrackTool
 
         }
 
-        public void SetEventData<E>(E _eventData) where E : TrackData.EventData
+        public void SetEventData(TrackData.EventData _eventData)
         {
-            //EventData = _eventData;
+            if (EventData == null)
+                return;
+
+            this.EventData = (T)_eventData;
         }
 
         public TrackData.EventData GetEventData()
